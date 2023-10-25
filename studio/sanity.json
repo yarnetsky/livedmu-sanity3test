@@ -1,0 +1,52 @@
+{
+  "root": true,
+  "project": {
+    "name": "Lived Experiences: Race at Miami"
+  },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Prod",
+      "default": true,
+      "api": {
+        "projectId": "q4arnlta",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "staging",
+      "title": "Staging",
+      "api": {
+        "projectId": "q4arnlta",
+        "dataset": "boldly-creative"
+      }
+    }
+  ],
+  "api": {
+    "projectId": "q4arnlta",
+    "dataset": "production",
+    "disused-dataset": "boldly-creative"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "@sanity/vision",
+    "media-library",
+    "markdown"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+---
+---
+
+@import '../node_modules/rfs/scss';
+
+$brand1: #f2e7fe;
+$brand2: #DBB2FF;
+$brand3: #BB86FC;
+$brand4: #985eff;
+$brand5: #7f39fb;
+$brand6: #6200ee;
+$brand8: #3700b3;
+
+$primary-light: $brand1;
+$primary: $brand4;
+$primary-normal: $brand6;
+$primary-dark: $brand8;
+
+$gray1: #f3f3f3;
+$gray2: #eeeeee;
+$gray3: #e7e7e7;
+$gray4: #dcdcdc;
+$gray5: #c5c5c5;
+$gray6: #a6a6a6;
+$gray7: #8b8b8b;
+$gray8: #777777;
+$gray9: #5e5e5e;
+$gray10: #4b4b4b;
+$gray11: #383838;
+$gray12: #2c2c2c;
+$gray13: #242424;
+$gray14: #181818;
+
+$gray-light: $gray5;
+
+body {
+  background: rgb(27, 23, 23);
+  background: -moz-radial-gradient(
+    circle,
+    rgba(27, 23, 23, 1) 85%,
+    rgba(207, 203, 208, 1) 135%
+  );
+  background: -webkit-radial-gradient(
+    circle,
+    rgba(27, 23, 23, 1) 85%,
+    rgba(207, 203, 208, 1) 135%
+  );
+  background: radial-gradient(
+    circle,
+    rgba(27, 23, 23, 1) 85%,
+    rgba(207, 203, 208, 1) 135%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1b1717",endColorstr="#cfcbd0",GradientType=1);
+}
+
+
+@media screen and (max-width: 990px) {
+  #front-hero-tabs {
+    display: none;
+  }
+  .bc-carousel-title {
+    margin: 0;
+  }
+}
+
+#myCarousel {
+  margin-top: 0;
+}
+
+#play-pause {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+/* SVG play-pause Controls */
+
+.carousel-tablist .rotation {
+  flex: 0 0 auto;
+  height: 30px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 10;
+}
+
+.carousel-tablist .svg-play .background {
+  stroke: black;
+  fill: black;
+  stroke-width: 1px;
+  opacity: 0.6;
+}
+
+.carousel-tablist .svg-play .border {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2px;
+}
+
+.carousel-tablist .svg-play .pause {
+  stroke-width: 4;
+  fill: transparent;
+  stroke: transparent;
+}
+
+.carousel-tablist .svg-play .play {
+  stroke-width: 1;
+  fill: transparent;
+  stroke: transparent;
+}
+
+.carousel-tablist .pause .svg-play .pause,
+.carousel-tablist .play .svg-play .play {
+  fill: white;
+  stroke: white;
+}
+
+.carousel-tablist .rotation:focus .svg-play .background,
+.carousel-tablist .rotation:hover .svg-play .background,
+.carousel-tablist .rotation:hover .svg-play .border {
+  fill: $brand5; //#005a9c;
+  stroke: $brand5;//#005a9c;
+  opacity: 1;
+}
+
+.carousel-tablist .rotation:focus .svg-play .border {
+  stroke: white;
+}
+
+
+
+/*-- end of svg css --*/
+
+
+
+.bc-carousel-title {
+  z-index: 0;
+  // margin-top: 3.5rem !important;
+}
+
+.carousel-item.active {
+  display: flex;
+}
+.carousel-title-top {
+  font-family: bebas-neue-by-fontfabric, sans-serif;
+  font-weight: 400;
+  color: white;
+  text-shadow: 2px 6px 6px $gray-light;
+  @include font-size(4rem);
+  // @include rfs(3rem, line-height);
+}
+
+.carousel-title-bottom {
+  font-family: bebas-neue-by-fontfabric, sans-serif;
+  font-weight: 700;
+  color: white;
+  @include font-size(7rem);
+  @include rfs(5rem, line-height);
+  @media screen and (max-width: 768px) {
+     font-size: 5rem;
+  }
+}
+.carousel-verbal-block {
+  width: 33%;
+  top: 64%;
+  z-index: 2;
+  right: 10%;
+  @media screen and (max-width: 990px) {
+    width: 100%;
+  }
+}
+.carousel-verbal {
+  -webkit-text-stroke: 2px white;
+  font-family: bebas-neue-by-fontfabric, sans-serif;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  @include font-size(7.5rem);
+  @include rfs(3.75rem, line-height);
+}
+
+.carousel-verbal-btn {
+  font-family: din-condensed, sans-serif;
+  font-weight: 300;
+  @include font-size(2.375rem);
+}
+
+.carousel-verbal-btn.btn.btn-outline-primary {
+  background-color: white;
+  &:hover {
+    background-color: $brand5;
+    color: white;
+  }
+}
+
+.carousel-verbal-paragraph {
+  color: white;
+  font-family: din-condensed, sans-serif;
+  font-weight: 300;
+  height: 6rem;
+  overflow: scroll;
+  @include font-size(1.25rem);
+  @include rfs(1.25rem, line-height);
+}
+
+.carousel-indicators {
+  left: auto;
+  margin: 0 !important;
+  background-image: repeating-linear-gradient(
+    30deg,
+    black,
+    $gray10 12rem
+  ); // TODO: switch to border line
+}
+
+.carousel-indicators button.slide-controller {
+  transform: rotate(-90deg);
+  height: 100%;
+  width: 4.5rem;
+  color: $brand1;
+  text-indent: 0px;
+  font-family: bebas-neue-by-fontfabric, sans-serif;
+  font-size: 1.375rem;
+  margin: 0 !important;
+  opacity: 1;
+  border: 0px solid transparent;
+
+  &[aria-selected='true'] {
+    // background-color: $brand6;
+    color: $brand3;
+    text-decoration:underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 0.3rem;
+    background-color: transparent;
+  }
+
+  &:hover {
+    // background-color: $brand6;
+    color: $brand2;
+    text-decoration:underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 0.3rem;
+    background-color: transparent;
+  }
+
+  &:not(.active) {
+    background-color: transparent;
+  }
+}
+
+
+
+
+/*
+.carousel-control-prev,
+.carousel-control-next {
+  font-size: 3rem;
+  color: $primary-normal;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+}
+
+#carousel-control-prev {
+  top: -5px !important;
+  bottom: auto !important;
+}
+
+#carousel-control-next {
+  top: auto !important;
+  bottom: 50px !important;
+}
+*/
+
+.bigquote {
+  height: 4rem;
+  font-size: 3.5rem;
+}
+blockquote {
+  color: $primary;
+  border-left: 0px;
+  padding-left: auto;
+  @include font-size(2.75rem);
+  font-style: italic;
+  padding: 0 3rem;
+}
+
+figure#blockquote {
+  background-image: repeating-linear-gradient(
+    170deg,
+    #dbdbdb,
+    #dbdbdb 28%,
+    $gray1 27%,
+    $gray1 72%
+  );
+  font-family: auto;
+  height: 30rem;
+  outline: 4px solid black;
+  outline-offset: -1.5rem;
+  @media screen and (max-width: 768px) {
+    height: 40rem;
+  }
+}

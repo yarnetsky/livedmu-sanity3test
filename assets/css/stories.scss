@@ -1,0 +1,121 @@
+---
+---
+
+$brand1: #F2E7FE;
+$brand2: #DBB2FF;
+$brand3: #BB86FC;
+$brand4: #985EFF;
+$brand5: #7F39FB;
+$brand6: #6200EE;
+$brand8: #3700B3;
+
+$primary-light: $brand1;
+$primary: $brand4;
+$primary-normal: $brand6;
+$primary-dark: $brand8;
+
+$gray5: #C5C5C5;
+$gray-light: $gray5;
+
+/* Facet styles */
+.facet-label {
+  font-weight: bold;
+}
+fieldset.facet ul {
+  margin-bottom: 1em;
+  // background-color: rgba(175, 238, 238, 0.402);
+  padding: 0.25em;
+  /* rounded corners */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  list-style: none;
+  margin-left: 0;
+}
+.facet-name {
+  text-transform: capitalize;
+}
+
+a.facet-tag{
+  color: $brand5;
+}
+/* Object styles */
+
+ul#stories {
+  list-style: none;
+  /* width: 400px; */
+}
+#stories li {
+  display: inline-grid;
+  margin: 3px;
+}
+#stories .card {
+  width: 12.5rem;
+}
+#stories a {
+  text-decoration: none;
+}
+#stories .card-body {
+  text-align: center;
+  height: 5em;
+  overflow-y: auto;
+}
+
+#stories .card .card-img-top {
+  cursor: zoom-in;
+}
+
+/* slider formatting */
+
+.noUi-target {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  margin-left: 1.5em;
+  width: 80%;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-value {
+  font-weight: bold;
+  color: #333 !important;
+}
+
+.noUi-value-large{
+  font-size: 10px;
+}
+
+.noUi-value-horizontal {
+  -webkit-transform: translate(-50%, 25px);
+  transform: translate(-50%, 25px);
+  writing-mode: vertical-lr;
+}
+
+.active-pip {
+  font-weight: bold;
+  font-size: 0.75rem!important;
+  color: $primary-dark !important;
+}
+
+.noUi-horizontal{
+  height: 12px!important;
+}
+.noUi-horizontal .noUi-handle{
+  width: 18px!important;
+  right: -9px!important;
+}
+
+/* Container holding the image and the text */
+.enlargedImageContainer {
+  position: sticky;
+  top: 0px;
+  text-align: center;
+  color: white;
+  .titleArea {
+    background-color: rgba(242, 231, 254, 0.5);
+    // position: absolute;
+    // bottom: 0;
+  }
+}
