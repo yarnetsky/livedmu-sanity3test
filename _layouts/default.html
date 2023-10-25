@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+{% include head.html %}
+
+<body>
+
+  {% include header.html %}
+  <section class="row {{page.layout}}-content-wrapper gx-0">
+    {% if page.layout == "biography" or page.layout =="documentary" or page.layout=="oralHistory" %}
+    <main class="page-content" aria-label="Content" id="main-content" style="padding:0px;">
+      <div class="offset-1 my-5">
+        <h1>{{page.title}}</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active d-inline-flex" aria-current="page">
+              <h2 class="h3"><a href="/">Home</a></h2>
+            </li>
+            <li class="breadcrumb-item active d-inline-flex" aria-current="page">
+              <h2 class="h3"><a href="/stories/">Explore Stories</a></h2>
+            </li>
+            <li class="breadcrumb-item active d-inline-flex" aria-current="page">
+              {% if page.layout == "oralHistory" %}
+                {% assign breadcrumb = '<a href="/stories?storyType=Oral%20History">Oral History</a>' %}
+              {% elsif page.layout == "documentary" %}
+                {% assign breadcrumb = '<a href="/stories?storyType=Documentary">Documentary</a>' %}
+              {% else %}
+                {% assign breadcrumb = '<a href="/stories?storyType=Biography">Biography</a>' %}
+              {% endif %}
+              <h2 class="h3">{{breadcrumb}}</h2>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <section class="row" style="background-color:#F2E7FE; padding-bottom: 7.5rem;">
+        <div class="col-10 offset-1">
+          {{ content }}
+        </div>
+      </section>
+
+
+      {% else %}
+      <main class="page-content" aria-label="Content" id="main-content">
+        <div class="col-10 offset-1">
+          <section class="text-center">
+            <h1 class="text-start">{{ page.title | escape }}</h1>
+          </section>
+          {{ content }}
+        </div>
+        {% endif %}
+
+        {% if page.layout == "biography" or page.layout =="documentary" or page.layout=="oralHistory" %}
+        {% else %}
+        <section>
+        </section>
+        {% endif %}
+      </main>
+
+      {% if page.layout == "biography" or page.layout=="documentary" or page.layout == "oralHistory" %}
+      {% else %}
+      <section>
+      </section>
+      {% endif %}
+      {% include footer.html %}
+
+</body>
+
+</html>

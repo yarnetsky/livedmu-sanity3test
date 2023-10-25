@@ -1,0 +1,87 @@
+<script>
+    function copyText(format) {
+        const textcontent = document.getElementById(`${format}-content`).innerText;
+        navigator.clipboard.writeText(textcontent);
+    }
+</script>
+
+{% if page.layout == "biography" %}
+    {% capture apa %}
+    <div class="h4">APA</div>
+    <p id="apa-content">
+    {{ authorsAPA | join: ', &amp; '}}. ({{pubDate | date: "%Y, %B %e"}}). {{page.title}}. <i>{{site.title}}</i>. {{page.url | absolute_url}}.
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('apa')">copy </button>
+    {% endcapture %}
+
+    {% capture mla %}
+    <div class="h4">MLA</div>
+    <p id="mla-content">
+    {{ authorsMLA | join: ', and '}}. "{{page.title}}." <i>{{site.title}}</i>, {{pubDate | date: "%e %b. %Y"}}, {{page.url | absolute_url}}. Accessed {{ "now" | date: "%e %b. %Y"}}.
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('mla')">copy </button>
+    {% endcapture %} 
+
+    {% capture chicago %}
+    <div class="h4">Chicago</div>
+    <p id="chicago-content">
+    {{ authorsMLA | join: ', and '}}. "{{page.title}}." {{site.title}}. Miami University, {{pubDate | date: "%B %e, %Y"}}. {{page.url | absolute_url}}. 
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('chicago')">copy </button>
+    {% endcapture %}
+{% endif %}
+
+{% if page.layout == "documentary" %}
+    {% capture apa %}
+    <p id="apa-content">
+    Rice, A. ({{pubDate | date: "%Y, %B %e"}}). <i>{{page.title}}</i>[Film]. Miami University. {{page.url | absolute_url}}.
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('apa')">copy </button>
+    {% endcapture %}
+
+    {% capture mla %}
+    <p id="mla-content">
+    Rice, Andy, director. <i>{{page.title}}</i>. Miami University, {{pubDate | date: "%e %b. %Y"}}, {{page.url | absolute_url}}. Accessed on: {{ "now" | date: "%e %b. %Y"}}. 
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('mla')">copy </button>
+    {% endcapture %}
+
+    {% capture chicago %}
+    <p id="chicago-content"> 
+    Rice, Andy, director. <i>{{page.title}}</i>. Miami University, {{pubDate | date: "%Y" }}. {{chicagoDuration}}. {{page.url | absolute_url}}.
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('chicago')">copy </button>
+    {% endcapture %}
+{% endif %}
+
+{% if page.layout == "oralHistory" %}
+    {% capture apa %}
+    <p id="apa-content">
+    {{ authorsAPA | join: ', &amp; '}}. ({{pubDate | date: "%Y, %B %e"}}). {{page.title}} [Video]. <i>{{site.title}}</i>. {{page.url | absolute_url}}.
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('apa')">copy </button>
+    {% endcapture %}
+
+    {% capture mla %}
+    <p id="mla-content">
+    {{ authorsMLA | join: ', and '}}. Interview with {{page.title}}. <i>{{site.title}}</i>, {{pubDate | date: "%e %b. %Y"}}, {{page.url | absolute_url}}. Accessed {{ "now" | date: "%e %b. %Y"}}.
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('mla')">copy </button>
+    {% endcapture %}
+
+    {% capture chicago %}
+    <p id="chicago-content">
+    {{chicagoIntervieweesString}}, "{{page.title}}", By {{interviewersChicago | join: " and "}}. <i>{{site.title}}</i>. {{pubDate | date: "%B %e, %Y"}}. {{chicagoDuration}}. {{page.url | absolute_url}}. 
+    </p>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" 
+    data-bs-title="Text Copied" data-bs-trigger="click" onclick="copyText('chicago')">copy </button>
+    {% endcapture %}
+{% endif %}

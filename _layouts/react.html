@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.20.6/babel.min.js"
+    integrity="sha512-hBXPfNiOYaPUeKTCOcEXWa1pe3l2Yz7nEolIA7lXkvwu+wgEU6OIJFz1+h3NAiaF1qmWu8dTPmXBY0A0qQTaGw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script type="text/babel">
+
+    class CardList extends React.Component {
+        render() {
+            const { monsters } = this.props;
+            return (
+                <div>
+                    {monsters.map((monster) => (
+                        <h4 key={monster.id}>{monster.name}</h4>
+                    ))}
+                </div>
+            );
+        }
+    }
+
+    class App extends React.Component {
+        constructor() {
+            super();
+
+            this.state = {
+                monsters: [],
+                searchField: "",
+            };
+        }
+
+        componentDidMount() {
+            fetch("https://jsonplaceholder.typicode.com/users")
+                .then((response) => response.json())
+                .then((users) =>
+                    this.setState(() => {
+                        return { monsters: users };
+                    })
+                );
+        }
+
+        onSearchChange = (event) => {
+            const searchField = event.target.value.toLocaleLowerCase();
+            this.setState(() => {
+                return { searchField };
+            });
+        };
+
+        render() {
+            const { monsters, searchField } = this.state;
+            const { onSearchChange } = this;
+
+            const filteredMonsters = monsters.filter((monster) => {
+                return monster.name.toLocaleLowerCase().includes(searchField);
+            });
+
+            return (
+                <div className="App">
+                    <input
+                        className="search-box"
+                        type="search"
+                        placeholder="search monsters"
+                        onChange={onSearchChange}
+                    />
+                    <CardList monsters={filteredMonsters} />
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+    );
+
+</script>

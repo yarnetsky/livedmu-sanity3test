@@ -1,0 +1,45 @@
+<!-- {% assign stories = site.data.all-data.result | where:'_type','story' | sort: 'title' %} -->
+{% assign stories = site.data.carousel[1] | sort: 'story-order' %}
+
+<ul class="list-unstyled m-0 p-0 row row-cols-auto gy-3 d-flex justify-content-center" aria-label="Flip cards to explore our stories">
+    {% for story in stories %}
+    {% if forloop.index == 2 or forloop.index == 4 or forloop.index == 6 %}
+    <li class="col-12 col-md-6 col-xxl-4">
+    <a href="{{story.read-more-link}}">
+            <div class="flip-card card h-100 mx-2" tabindex="0" aria-roledescription="flipping card">
+                <div class="flip-card-inner">
+            <div class="flip-card-front d-flex flex-column justify-content-center" role="button" aria-expanded="true" id="flip-card-front_{{story.story-order}}" aria-controls="flip-card-back_{{story.story-order}}">
+                        <div class="card-title p-3">
+                            <h3>{{ story.story-title }}</h3>
+                        </div>
+                    </div>        
+            <div class="flip-card-back align-items-end" role="button"  aria-expanded="false" id="flip-card-back_{{story.story-order}}" aria-controls="flip-card-front_{{story.story-order}}" type="submit">
+                <img src="{{story.image-src}}" style="height:100%; width:100%; object-fit: cover;" alt="{{story.flip-alt}}">
+
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    {% else %}
+    <li class="col-12 col-md-6 col-xxl-4">
+        <a href="{{story.read-more-link}}">
+            <div class="flip-card card h-100 mx-2" tabindex="0" aria-roledescription="flipping card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front-rev align-items-end" 
+                    id="flip-card-front_{{story.story-order}}" aria-controls="flip-card-back_{{story.story-order}}" 
+                    role="button" aria-expanded="true" type="submit" onclick="location.replace('{{story.read-more-link}}')">
+                        <img src="{{story.image-src}}" style="height:100%; width:100%; object-fit: cover;" alt="{{story.flip-alt}}">
+                    </div>
+                    <div class="flip-card-back-rev d-flex flex-column justify-content-center" id="flip-card-back_{{story.story-order}}" aria-controls="flip-card-front_{{story.story-order}}" role="button" aria-expanded="false" type="submit">
+                        <div class="card-title p-3">
+                            <h3>{{ story.story-title }}</h3>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>

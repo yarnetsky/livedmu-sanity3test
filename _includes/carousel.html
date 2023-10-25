@@ -1,0 +1,151 @@
+
+
+
+<div id="front-hero-tabs">
+    <div class="d-flex justify-content-center">
+        <div
+            class="bc-carousel-title position-absolute border border-5 border-primary bg-dark bg-opacity-50 text-center px-5 py-3">
+            <h1 id="tablist-1">
+                <span class="carousel-title-top">Lived Experiences</span> <br>
+                <span class="carousel-title-bottom">Race at Miami University</span>
+            </h1>
+        </div>
+
+    </div>
+
+
+    <section id="myCarousel" class="carousel-tablist" aria-roledescription="carousel" aria-label="Explore Our Stories" class="justify-content-center d-flex">
+
+        <div class="carousel-inner">
+            <div class="controls">
+                <button id="play-pause" class="rotation" type="button">
+                <svg width="42" height="34" version="1.1" xmlns="http://www.w3.org/2000/svg" class="svg-play">
+                 <rect class="background" x="2" y="2" rx="5" ry="5" width="38" height="24"></rect>
+                    <rect class="border" x="4" y="4" rx="5" ry="5" width="34" height="20"></rect>
+                <polygon class="pause" points="17 8 17 20"></polygon>
+                <polygon class="pause" points="24 8 24 20"></polygon>
+                <polygon class="play" points="15 8 15 20 27 14"></polygon>
+                    </svg>
+                </button>
+</div>
+               
+            <div role="tablist" class="carousel-indicators flex-column border-start border-2 h-100 justify-content-evenly" aria-orientation="vertical" aria-label="Slides">
+        <button id="carousel-tab-1" class="slide-controller" 
+        type="button" role="tab" aria-label="Watch" 
+        aria-selected="true" aria-controls="carousel-item-1">
+                    Watch
+                </button>
+        <button id="carousel-tab-2" class="slide-controller" 
+        type="button" role="tab" tabindex="-1" 
+        aria-label="Listen" aria-selected="false" 
+        aria-controls="carousel-item-2">
+                    Listen
+                </button>
+        <button id="carousel-tab-3" class="slide-controller" 
+        type="button" role="tab" tabindex="-1" aria-label="Learn" 
+        aria-selected="false" aria-controls="carousel-item-3">
+                    Learn
+                </button>
+        <button id="carousel-tab-4" class="slide-controller" 
+        type="button" role="tab" tabindex="-1" aria-label="Engage" 
+        aria-selected="false" aria-controls="carousel-item-4">
+                    Engage
+                </button>
+
+            </div>
+                
+            
+            <div id="myCarousel-items" class="carousel-items playing bc-carousel justify-content-center" aria-live="off">
+
+                {% assign carousel-info = site.data.carousel[0] %}
+                {% for carousel-item in carousel-info %}
+            
+
+{% if carousel-item.slide-order == 1 %}
+        <div class="carousel-item active" id="carousel-item-{{ carousel-item.slide-order }}" role="tabpanel"
+            aria-roledescription="slide" aria-label="{{ carousel-item.slide-order }} of 4">
+{% else %}
+        <div class="carousel-item" id="carousel-item-{{ carousel-item.slide-order }}" role="tabpanel"
+            aria-roledescription="slide" aria-label="{{ carousel-item.slide-order }} of 4">
+{% endif %}
+
+                
+                    <div class="position-absolute carousel-verbal-block">
+                        <p class="carousel-verbal">{{ carousel-item.carousel-verbal }}</p>
+                        <div id="action-{{ carousel-item.slide-order }}">
+                            {% if carousel-item.carousel-verbal-block.carousel-verbal-link %}
+                            <a href="{{ carousel-item.carousel-verbal-block.carousel-verbal-link }}"
+                                class="carousel-verbal-btn btn btn-outline-primary mt-1 pe-3"><i
+                                    class="{{ carousel-item.carousel-verbal-block.icon-class }}"></i> {{
+                                carousel-item.carousel-verbal-block.carousel-verbal-btn}}
+                            </a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+<div class="m-auto">
+                    <img src="{{ carousel-item.images.main-img }}" alt="{{ carousel-item.images.alt }}"
+                        style="z-index:1;">
+
+                
+                <div class="position-absolute" style="top:0px; z-index:-1;">
+                    <img src="{{ carousel-item.images.bg-img }}" alt="">
+                </div>
+            </div>
+                    </div>
+        
+
+    
+                {% endfor %}
+
+            </div>
+        </div>
+        <!-- carousel-inner -->
+    </section>
+    <!-- /.carousel -->
+    <div class="col-sm-1"></div>
+
+</div>
+
+
+    <!-- Responsive component -->
+
+    <div class="d-block d-lg-none">
+
+        <div class="">
+            <div
+                class="bc-carousel-title border border-5 border-primary bg-dark bg-opacity-50 text-center px-5 py-3 my-5 my-md-0">
+                <h1>
+                    <span class="carousel-title-top">Lived Experiences</span> <br>
+                    <span class="carousel-title-bottom">Race at Miami University</span>
+                </h1>
+            </div>
+            {% assign carousel-info = site.data.carousel[0] %}
+            {% for carousel-item in carousel-info %}
+            <div class="bc-carousel justify-content-center">
+                
+                    <img src="{{ carousel-item.images.full-img }}" alt="{{ carousel-item.carousel-verbal }}">
+                    <div class="carousel-verbal-block d-flex flex-row justify-content-evenly align-items-center">
+                        <p class="carousel-verbal mb-0 mt-2">{{ carousel-item.carousel-verbal }}</p>
+                        <div>
+                            {% if carousel-item.carousel-verbal-block.carousel-verbal-link %}
+                            <a href="{{ carousel-item.carousel-verbal-block.carousel-verbal-link }}">
+                                {% endif %}
+                                <button class="carousel-verbal-btn btn btn-outline-primary mt-1 pe-3 py-3"><i
+                                        class="{{ carousel-item.carousel-verbal-block.icon-class }}"></i> {{
+                                    carousel-item.carousel-verbal-block.carousel-verbal-btn}}</button>
+                                {% if carousel-item.carousel-verbal-block.carousel-verbal-link %}
+                            </a>
+                            {% endif %}
+                        </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+<script defer src="/assets/js/carouse-tablist.js" type="text/javascript"></script> 
+

@@ -1,0 +1,35 @@
+<hr> 
+ <section class="row gx-5">
+
+        <div class="story">
+            <h2 class="h3">Story data</h2>
+            <ul class="story-data">
+                <li>Title (story.title): {{story.title}}</li>
+                <li>Decades (story.decades): {{story.decades | join: ', '}}</li>
+            </ul>
+            <h3 class="h4">Full story data</h3>
+            {{story}}
+        </div>
+
+        <div class="story-finder">
+            <h2 class="h3">StoryFinder data</h2>
+
+            <ul class="story-calculated-data">
+                <li>StoryFinder Values:</li>
+                <li>Cover Image (storyFinderData.coverImage): {{storyFinderData.coverImage}}</li>
+                <li>Decades (storyFinderData.decades): {{storyFinderData.decades | join: ', '}}</li>
+                <li>Theme (storyFinderData.theme): {{storyFinderData.theme | join: ', '}}</li>
+                <li>Duration (storyFinderData.duration): {{storyFinderData.duration}}</li>
+                <li>Location (storyFinderData.location): {{storyFinderData.location}}</li>
+            </ul>
+            <h3 class="h4">Full StoryFinder data</h3>
+            {{storyFinderData}}
+        </div>
+
+
+    <style>
+        h1 {
+            color: #985EFF;
+        }
+    </style>
+</section>

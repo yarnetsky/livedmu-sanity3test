@@ -1,0 +1,79 @@
+[
+    {
+        "fieldName": "title",
+        "fieldLabel": "Title",
+        "fieldType": "string",
+        "sortable": true,
+        "filterable": false
+    },
+    {
+        "fieldName": "storyType",
+        "fieldLabel": "Story Type",
+        "fieldType": "tag",
+        "sortable": false,
+        "filterable": true
+    },
+    {
+        "fieldName": "raceOrEthnicity",
+        "fieldLabel": "Race/Ethnicity",
+        "fieldType": "tag",
+        "sortable": false,
+        "filterable": true
+    },
+    {
+        "fieldName": "gender",
+        "fieldLabel": "Gender",
+        "fieldType": "tag",
+        "sortable": true,
+        "filterable": true
+    },
+    {
+        "fieldName": "status",
+        "fieldLabel": "Miami Status",
+        "fieldType": "tag",
+        "sortable": false,
+        "filterable": true
+    },
+    {
+        "fieldName": "decades",
+        "fieldLabel": "Decade",
+        "fieldType": "slider",
+        "values": [
+            "1900s",
+            "1910s",
+            "1920s",
+            "1930s",
+            "1940s",
+            "1950s",
+            "1960s",
+            "1970s",
+            "1980s",
+            "1990s",
+            "2000s",
+            "2010s",
+            "2020s"
+        ],
+        "sortable": true,
+        "filterable": true
+    },
+    {
+        "fieldName": "theme",
+        "fieldLabel": "Theme",
+        "fieldType": "tag",
+        "sortable": false,
+        "filterable": true
+    },
+    {
+        "fieldName": "coverImage",
+        "fieldLabel": "Photo",
+        "fieldType": "string",
+        "sortable": false,
+        "filterable": false
+    },
+    {
+        "fieldName": "story-slug",
+        "fieldType": "string",
+        "sortable": false,
+        "filterable": false
+    }
+]

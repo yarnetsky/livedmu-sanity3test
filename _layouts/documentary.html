@@ -1,0 +1,155 @@
+---
+layout: default
+---
+{% assign slug = page.url | replace: '/stories/', '' %}
+{% assign person = site.data.all-data.result | where:'_type','person' | where:'slug.current', slug | first %}
+{% assign story = site.data.all-data.result | where:'_type','story' | where:'slug.current', slug | first %}
+{% assign storyFinderData = site.data.story-finder.result | where: 'slug', slug |first %}
+
+{% include bio-variables.html %}
+{% include linkify-sources-js.html %}
+<section class="row gx-5 mt-5 justify-content-center">
+
+    <div class="col-12 col-sm-8 col-xl-4 mt-5 align-self-start">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" aria-label="click to see larger image" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img src="{{storyFinderData.bestImage}}" class="img-fluid rounded-3" alt="{{fullName}}">
+            {% if storyFinderData.bestImageCaption %}
+            <figcaption>{{storyFinderData.bestImageCaption}}</figcaption>
+            {% endif %}
+        </button>
+        <!-- Endof Button trigger modal -->
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4" id="exampleModalLabel">{{page.title}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{storyFinderData.bestImage}}" class="img-fluid rounded-3" alt="{{fullName}}">
+                    {% if storyFinderData.bestImageCaption %}
+                    <figcaption>{{storyFinderData.bestImageCaption}}</figcaption>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Endof Modal -->
+    <div class="col-12 col-xl-8 mt-5">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                {% include bio-data.html %}
+
+                {% assign pageBios = '' | split: '' %}
+                {% for person in story.featured %}
+                {% assign personRecord = site.data.all-data.result | where:'_id', person._ref | first %}
+                {% if personRecord.bio %}
+                {% assign bio = personRecord.bio | markdownify %}
+                {% assign pageBios = pageBios | push: bio %}
+                {% endif %}
+                {% endfor %}
+                {% if pageBios.size > 0 %}
+                <h3 class="mt-5">Biography</h3>
+                {% for bio in pageBios %}
+                {{bio | markdownify}}
+                {% endfor %}
+                {% endif %}
+
+                {% if story.body %}
+                <h3 class="mt-5">{{story.storyType}} Description</h3>
+                {{ story.body | markdownify }}
+                {% endif %}
+            </div>
+
+            <div class="col offset-1">
+                {% if storyFinderData.theme %}
+                {% include themes.html %}
+                {% endif %}
+                {% if story.seeAlso and story.seeAlso.size > 0 %}
+                {% include related.html %}
+                {% endif %}
+            </div>
+
+
+        </div>
+
+
+        <span class="collapse" id="story-body">{{story.body | markdownify}}
+            <div id="sources">
+                <h4 class="mt-5">Sources</h4>
+                <p>{{ sources | markdownify }}</p>
+            </div>
+            <div id="credits">
+                <h4 class="mt-5">Credits</h4>
+                <p>{{ credits | join: ', '}}</p>
+                <p class="pub-date">Published: {{ pubDate | date: "%B %d, %Y" }}{{lastUpdateString}}</p>
+            </div>
+        </span>
+    </div>
+</section>
+
+<section id="kaltura">
+    {% if page.layout == "oralHistory" %}
+    <h3>Oral History</h3>
+    {% else %}
+    <h3>Documentary</h3>
+    {% endif %}
+
+    {% include kaltura.html %}
+
+    {% if page.layout == "oralHistory" %}
+    <h4 class="mt-5">Production Details</h4>
+    <ul>
+        {% if creditsNameOnly != "" %}
+        <li>Interviewer: {{creditsNameOnly}}</li>
+        {% endif %}
+        {% if story.interviewDate %}
+        <li>Interview Date: {{story.interviewDate | date: "%B %d, %Y"}}</li>
+        {% endif %}
+        {% if story.duratino %}
+        <li>Interview Duration: {{story.duration}}</li>
+        {% endif %}
+        {% if story.location %}
+        <li>Interview Location: {{story.location}}</li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% if story.productionCredits %}
+    <h4 class="mt-5">Production Credits</h4>
+    {{ story.productionCredits | markdownify }}
+    {% endif %}
+</section>
+
+<section id="iiif">
+    {% include iiif.html %}
+</section>
+
+{% if story.learnMore %}
+<section id="learnMore">
+    {% include learn-more.html %}
+</section>
+{% endif %}
+
+<section id="citeAs">
+    <h3>Cite this video:</h3>
+    {% include cite-this-page.html %}
+</section>
+
+<section id="publication-date">
+    {% if pubDate %}
+    <p class="pub-date">Published: {{ pubDate | date: "%B %d, %Y" }}{{lastUpdateString}}</p>
+    {% endif %}
+</section>
+
+{% include creative-commons.html %}
+
+{% comment | note: "remove this comment wrapper to view related variables echoed at the bottom of the page" %}
+{% include echo-documentary-variables.html %}
+{% endcomment %}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+{% include head.html %}
+
+<link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+<script src="/assets/js/home.js"></script>
+
+<body>
+  {% include carousel.html %}
+  <main class="page-content pt-0 bg-white" aria-label="Content" id="main-content">
+    <div class="home">
+      {{ content }}
+
+      {% include header.html %}
+
+      <div class="col-10 offset-1">
+
+        <section>
+          <div class="row">
+            <div class="col-12 col-lg-3 align-self-center">
+              <h2>Lived Experiences Through Storytelling</h2>
+              <p class="mt-5 lead">
+                <i>Lived Experiences Through Storytelling: Race at Miami University</i> is a collaborative storytelling 
+                project that chronicles the history of
+                racial dynamics at Miami University through documentaries, oral histories, and archival stories of
+                students,
+                alumni, faculty, and staff of color. At the heart of the project are the lived experiences of the past
+                and present who have shared their experiences while providing resources for teaching, studying and
+                learning.
+              </p>
+            </div>
+
+            <div class="col-12 col-lg-8 offset-lg-1">
+              {% include flip-cards.html %}
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div
+            class="border-primary border-top border-bottom py-5 px-0 px-xl-5 m-5 text-center d-flex flex-wrap justify-content-center justify-content-xl-between">
+            {% assign allStories = site.data.all-data.result | where: '_type', 'story' %} 
+            {% assign stories_count = allStories | size %}
+            {% assign bios = site.data.all-data.result | where: 'storyType', 'Biography' %}
+            {% assign bio_count = bios.size %}
+            {% assign oralHistories = site.data.all-data.result | where: 'storyType', 'Oral History' %}
+            {% assign oralHistoryVideos = '' | split: '' %}
+            {% for entry in oralHistories %} 
+              {% assign oralHistoryVideos = oralHistoryVideos | push: entry.kaltura[0]._ref %}
+            {% endfor %}
+            {% assign oralHistory_count = oralHistoryVideos | uniq | size %}
+            <div class="col-12 col-md-6 col-xl-4 col-xxl-3 h3 text-primary mt-4">
+              <p class="stat-number">10,080</p>
+              <p>Digitized Pages</p>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4 col-xxl-2 h3 text-primary mt-4 me-1">
+              <p class="stat-number">{{stories_count}}</p>
+              <p>New Stories</p>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4 col-xxl-2 h3 text-primary mt-4 me-1">
+              <p class="stat-number">{{bio_count}}</p>
+              <p>Biographies</p>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4 col-xxl-2 h3 text-primary mt-4 me-1">
+              <p class="stat-number">{{oralHistory_count}}</p>
+              <p>Oral Histories</p>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4 col-xxl-2 h3 text-primary mt-4 me-1">
+              <p class="stat-number">5</p>
+              <p>Documentaries</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Featured News -->
+        <section>
+          <div class="row">
+            <div class="col-12 col-lg-8 order-2 order-lg-1">
+              {% include featured-links.html %}
+            </div>
+            <div class="col-12 col-lg-3 align-self-center offset-lg-1 order-1 order-lg-2">
+              <h2>Featured News</h2>
+            </div>
+          </div>
+        </section>
+        <section></section>
+
+        <!-- Quote -->
+        <section>
+          <div class="border-primary border-top border-bottom p-5 m-5 text-center">
+            <i class="h3 text-primary bi bi-quote"></i>
+            <p class="h3 text-primary mt-4">
+              <i>
+                I think many African Americans would identify that our experience is a bittersweet experience</i>
+            </p>
+            <p class="h3 text-primary mt-4 fs-4">
+              <i>
+                —— Larry Young</i>
+            </p>
+          </div>
+        </section>
+
+        <!-- Events -->
+        <section id="home-events">
+          <div class="row">
+            <!-- <div class="col-12 col-lg-3 align-self-center"> -->
+            <div class="col-12 col-lg-3 mt-0 mt-lg-5">
+              <h2>Events</h2>
+              <p class="mt-5 lead">
+                Join us for upcoming events related to the <i>Lived Experiences: Race at Miami University</i> project. All
+                events are free and open to the public.
+              </p>
+            </div>
+
+            <div class="col-12 col-lg-8 offset-lg-1">
+              {% include localist.html %}
+            </div>
+        </section>
+
+
+
+      </div>
+    </div>
+    <section>
+    </section>
+  </main>
+  {% include footer.html %}
+</body>

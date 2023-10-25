@@ -1,0 +1,199 @@
+[
+	{
+		"name": "Jacqueline Johnson",
+		"title": "Project Lead.<br>Archivist and Principal Librarian",
+		"category": "project-team",
+		"img": "/assets/img/team/jacqueline-johnson.jpg"
+	},
+	{
+		"name": "Denise Taliaferro Baszile",
+		"title": "Professor, Department of Educational Leadership",
+		"category": "project-team",
+		"img": "/assets/img/team/denise-baszile.jpg"
+	},
+	{
+		"name": "Durell M. Callier",
+		"title": "Associate Professor, Department of Educational Leadership",
+		"category": "project-team",
+		"img": "/assets/img/team/durell-callier.jpg"
+	},
+	{
+		"name": "Steven Conn",
+		"title": "W. E. Smith Professor of History",
+		"category": "project-team",
+		"img": "/assets/img/team/steven-conn.jpg"
+	},
+	{
+		"name": "Yvette Harris",
+		"title": "Professor, Department of Psychology",
+		"category": "project-team",
+		"img": "/assets/img/team/yvette-harris.jpg"
+	},
+	{
+		"name": "Jody Perkins",
+		"title": "Digital Scholarship Librarian, Metadata Specialist, Associate Librarian",
+		"category": "project-team",
+		"img": "/assets/img/team/jody-perkins.jpg"
+	},
+	{
+		"name": "Andy Rice",
+		"title": "Assistant Professor, Department of Media, Journalism, and Film",
+		"category": "project-team",
+		"img": "/assets/img/team/andy-rice.jpg"
+	},
+	{
+		"name": "Kate Rousmaniere",
+		"title": "Professor, Department of Educational Leadership",
+		"category": "project-team",
+		"img": "/assets/img/team/kate-rousmaniere.jpg"
+	},
+	{
+		"name": "Seth Seward",
+		"title": "Assistant Director of Alumni Relations",
+		"category": "project-team",
+		"img": "/assets/img/team/seth-seward.jpg"
+	},
+	{
+		"name": "Helen Sheumaker",
+		"title": "Associate Teaching Professor, History, Global and Intercultural Studies",
+		"category": "project-team",
+		"img": "/assets/img/team/helen-sheumaker.jpg"
+	},
+	{
+		"name": "Timothy Melley",
+		"title": "Professor, Department of English, Geoffrion Family Director of the Humanities Center",
+		"category": "project-team",
+		"img": "/assets/img/team/tim-melley.jpg"
+	},
+	{
+		"name": "Alia Levar Wegner",
+		"title": "Digital Collections Librarian, Assistant Librarian",
+		"category": "project-team",
+		"img": "/assets/img/team/alia-wegner.jpg"
+	},
+	{
+		"name": "Tiffany Dogan",
+		"title": "Library Associate",
+		"category": "web-team",
+		"img": "/assets/img/team/tiffany-dogan.jpg"
+	},
+	{
+		"name": "Ken Irwin",
+		"title": "Web Services Librarian",
+		"category": "web-team",
+		"img": "/assets/img/team/ken-irwin.jpg"
+	},
+	{
+		"name": "Meng Qu",
+		"title": "Web Design Librarian",
+		"category": "web-team",
+		"img": "/assets/img/team/meng-qu.jpg"
+	},
+	{
+		"name": "Jerry Yarnetsky",
+		"title": "Web Services Librarian",
+		"category": "web-team",
+		"img": "/assets/img/team/jerry-yarnetsky.jpg"
+	},
+	{
+		"name": "Anika Elias",
+		"title": "Video Production Team.<br>B.A. Political Science and Strategic Communication, Class of 2023",
+		"category": "student-assistants",
+		"img": "/assets/img/team/anika-elias.jpg"
+	},
+	{
+		"name": "Maggie Peña",
+		"title": "Video Production Team.<br>B.A. Journalism and American Studies, Class of 2023",
+		"category": "student-assistants",
+		"img": "/assets/img/team/maggie-pena.jpg"
+	},
+	{
+		"name": "Tim Bredemeier",
+		"title": "Archives Team.<br>B.A. History and Integrated Social Studies Education, Class of 2023",
+		"category": "student-assistants",
+		"img": "/assets/img/team/tim_bredemeier.jpg"
+	},
+	{
+		"name": "Laurel M. Myers",
+		"title": "Archives Team and History Team.<br>B.A. History and American Studies, Class of 2023",
+		"category": "student-assistants",
+		"img": "/assets/img/team/laurel-myers.jpg"
+	},
+	{
+		"name": "Andy Beck",
+		"title": "Archives Team.<br>B.A. History, Class of 2023",
+		"category": "student-assistants",
+		"img": "/assets/img/team/andy-beck.jpg"
+	},
+	{
+		"name": "Laura Janosik",
+		"title": "History Team.<br>M.A. History, Class of 2023",
+		"category": "student-assistants",
+		"img": "/assets/img/team/laura-janosik.jpg"
+	},
+	{
+		"name": "Yvette Harris",
+		"title": "Co-chair.<br>Professor, Department of Psychology",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Curtis Ellison",
+		"title": "Co-chair.<br>Professor Emeritus, Department of History",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Andrew Offenburger",
+		"title": "Associate Professor, Department of History",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Kate Rousmaniere",
+		"title": "Professor, Department of Educational Leadership",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Ann Elizabeth Armstrong",
+		"title": "Associate Professor, Department of Theatre",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Denise Taliaferro Baszile",
+		"title": "Professor, Department of Educational Leadership",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Linh Dich",
+		"title": "Associate Professor, Department of English",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Sanjay Puligadda",
+		"title": "Associate Professor, Department of Marketing",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Alia Levar Wegner",
+		"title": "Digital Collections Librarian, Assistant Librarian",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Deloris Rome Hudson",
+		"title": "Alumna, Education and Family and Consumer Science, Class of 1971",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Durell Callier",
+		"title": "Associate Professor, Department of Educational Leadership",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Jody Perkins",
+		"title": "Digital Scholarship Librarian, Metadata Specialist, Associate Librarian",
+		"category": "advisory-board"
+	},
+	{
+		"name": "Anika Elias",
+		"title": "Student, Political Science and Strategic Communications, Class of 2023",
+		"category": "advisory-board"
+	}
+]

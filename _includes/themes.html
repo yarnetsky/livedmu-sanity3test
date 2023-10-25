@@ -1,0 +1,9 @@
+<div>
+    <h3 class="">Themes</h3>
+    <div class="">
+        {% for theme in storyFinderData.theme %}
+        <a type="button" class="btn btn-sm btn-outline-primary-pkbg m-1 text-start"
+            href="/stories?theme={{theme}}">{{theme}}</a><br />
+        {% endfor %}
+    </div>
+</div>

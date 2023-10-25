@@ -1,0 +1,174 @@
+{% assign slug = page.url | replace: '/stories/', '' %}
+{% assign person = site.data.all-data.result | where:'_type','person' | where:'slug.current', slug | first %}
+{% assign story = site.data.all-data.result | where:'_type','story' | where:'slug.current', slug | first %}
+{% assign storyFinderData = site.data.story-finder.result | where: 'slug', slug |first %}
+
+{% assign majors = site.data.all-data.result | where:'_type','major'  %}
+{% assign fullName = person.personalNames.firstName | append: ' ' | append: person.personalNames.lastName %}
+
+{% assign miamiInfo = storyFinderData.featuredMiamiInfo.miamiEducation %}
+{% assign miamiEmploy = storyFinderData.featuredMiamiInfo.miamiEmployment %}
+
+{% assign authors = story.author %}
+{% assign credits = '' | split: '' %}
+{% assign creditsNameOnly = '' | split: '' %}
+{% assign educationHistory = '' %}
+{% assign educationHistoryArray = '' | split: '' %}
+{% if story.publishedAt %}
+    {% assign pubDate = story.publishedAt %}
+{% else %}
+    {% assign pubDate = "2023-02-01" %}
+{% endif %}
+{% assign updatedDate = story.storyMetadata.lastUpdated|slice: 0,10 %}
+{% assign lastUpdateString = '' %}
+{% assign sources = story.citations %}
+
+{% if updatedDate != '' %}
+    {% assign updatedDate = updatedDate | date: "%B %d, %Y" %}
+    {% assign lastUpdateString = 'Last updated: ' | append: updatedDate | append: '.' %}
+{% endif %}
+
+{% assign authorsAPA = ''| split: '' %}
+{% assign authorsMLA = ''| split: '' %}
+{% assign interviewersChicago = '' | split: '' %}
+{% for author in authors %}
+    {% assign authorDegrees = '' | split: '' %}
+    {% assign key = author._key %}
+    {% assign authorRecord = site.data.all-data.result | where: '_id',author._ref | first %}
+    {% assign auMiamiInfo = authorRecord.miamiInformation.miamiEducation %}
+    {% for instance in auMiamiInfo %}
+        {% assign instanceArray = '' | split: '' %}
+        {% assign majorRef = major[0]._ref %}
+        {% assign majorEntry = majors | where:'_id',majorRef | first %}
+        {% assign auMajor = '' | split: '' %}
+        {% assign instanceMajors = instance.major %}
+        {% for j in instanceMajors %}
+            {% assign key = j._ref %}
+            {% assign thisMajor = majors | where:'_id',key | first %}
+            {% assign auMajor = auMajor | push: thisMajor.title %}
+        {% endfor %}
+        {% assign auMajor = auMajor | join: ' &amp; ' %}
+        {% assign gradYear = instance.graduationYear | date: "%Y" %}
+        {% if instance.degree.size > 0 %}
+            {% assign instanceArray = instanceArray | push: instance.degree.size %}
+        {% endif %}
+        {% if auMajor %}
+            {% assign instanceArray = instanceArray | push: auMajor %}
+        {% endif %}
+        {% if gradYear %}
+            {% assign instanceArray = instanceArray | push: gradYear %}
+        {% endif %}
+        {% assign instanceString = instanceArray | join: ', ' %}
+        {% assign authorDegrees = authorDegrees | push: instanceString %}
+    {% endfor %}
+    {% assign authorDegrees = authorDegrees | join: '; ' %}
+    {% assign authorInfo = authorRecord.name | append: ', (' | append: authorDegrees | append: ')' %}
+    {% assign credits = credits | push: authorInfo %}
+    {% assign creditsNameOnly = creditsNameOnly | push: authorRecord.name %}
+    {% assign authorFirstInit = authorRecord.personalNames.firstName | slice: 0 %}
+    {% assign authorAPA = authorRecord.personalNames.lastName | append: ', ' | append: authorFirstInit %}
+    {% assign authorsAPA = authorsAPA | push: authorAPA %}
+    {% assign authorMLA = authorRecord.personalNames.lastName | append: ', ' | append: authorRecord.personalNames.firstName %}
+    {% assign interviewerChicago = authorRecord.personalNames.firstName | append: ' ' | append: authorRecord.personalNames.lastName %}
+    {% assign interviewersChicago = interviewersChicago | push: interviewerChicago %}
+    {% assign authorsMLA = authorsMLA | push: authorMLA %}
+{% endfor %} 
+
+{% assign chicagoInterviewees = '' | split: ',' %}
+{% for featPerson in {{story.featured}} %}
+    {% assign featData = site.data.all-data.result | where: '_id', featPerson._ref | first %}
+    {% assign chicagoInterviewee = featData.personalNames.lastName | append: ", " | append: featData.personalNames.firstName %}
+    {% assign chicagoInterviewees = chicagoInterviewees | push: chicagoInterviewee %}
+{% endfor %} 
+{% if chicagoInterviewees.size < 3 %}
+    {% assign chicagoIntervieweesString = chicagoInterviewees | join: ' and ' %}
+{% endif %}
+{% if chicagoInterviewees.size >= 3 %} 
+{% assign cutoff = chicagoInterviewees.size | minus: 1 %}
+{% assign chicagoIntervieweesFirstPart = chicagoInterviewees | slice: 1,cutoff %}
+{% assign chicagoIntervieweesString = chicagoIntervieweesFirstPart | join: ', ' %}
+{% assign chicagoIntervieweesString = chicagoIntervieweesString | append: ', and ' %}
+{% assign chicIntlast = chicagoInterviewees | slice: -1 | first %}
+{% assign chicagoIntervieweesString = chicagoIntervieweesString | append: chicIntlast %}
+{% endif %}
+
+{% assign chicagoDuration = '' %}
+{% assign duration = story.duration | split: ':' %}
+{% if duration.size == 2 %}
+{% assign chicagoDuration = duration[0] | plus: 0 | append: ' min' %}
+{% endif %}
+{% if duration.size == 3 %} 
+{% assign hours = duration[0] | plus: 0 %}
+{% assign minutes = duration[1] | plus: 0 %}
+{% assign chicagoDuration = hours | append: ' hr., ' | append: minutes | append: ' min'  %}
+{% endif %}
+{% include cite-formats.html %}
+
+{% assign i = 0 %}
+{% for instance in miamiInfo %}
+    {% assign instanceMajors = instance.major %}
+    {% assign major = '' | split: '' %}
+    {% for j in instanceMajors %}
+        {% assign key = j._ref %}
+        {% assign thisMajor = majors | where:'_id',key | first %}
+        {% assign major = major | push: thisMajor.title %}
+    {% endfor %}
+
+    {% assign year = instance.graduationYear | date: "%Y" %} 
+    {% assign degrees = instance.degree | join: ', ' %}
+    {% assign institution = instance.educationInstitution %}
+    {% assign entry = '' | split: '' %} 
+    {% if degrees.size >0 %}
+        {% assign entry = entry | push: degrees %} 
+    {% endif %}
+    {% if major and major.size > 0 %}
+        {% assign majorString = major | join: ' &amp; ' %}
+        {% assign entry = entry | push: majorString %}
+    {% endif %}
+    {% if year %}
+        {% assign entry = entry | push: year %}
+    {% endif %}
+    {% if institution %}
+        {% assign entry = entry | push: institution %}
+    {% endif %}
+    {% assign entry = entry | join: ', ' %}
+    {% assign educationHistory = educationHistory | append: entry  %}
+    {% assign educationHistoryArray = educationHistoryArray | push: entry %}
+    {% assign i = i | plus: 1 %}
+{% endfor %}
+
+{% assign employmentHistory = '' %}
+{% assign employmentHistoryArray = '' | split: '' %}
+{% if miamiEmploy.size > 0 %}
+    {% for job in miamiEmploy %}
+        {% assign entry = '' | split: '' %} 
+        {% if job.positionTitle %}
+            {% assign entry = entry | push: job.positionTitle %}
+        {% endif %}
+        {% if job.department %}
+            {% assign entry = entry | push: job.department %}
+        {% endif %}
+        {% if job.employmentInstitution and job.employmentInstitution != "Miami University" %}
+            {% assign entry = entry | push: job.employmentInstitution %}
+        {% endif %}
+        {% if job.empStartYear %}
+            {% assign range = '' | split: '' %}
+            {% assign startYear = job.empStartYear | date: "%Y" %}
+            {% assign range = range | push: startYear %}
+            {% if job.empEndYear %}
+                {% assign endYear = job.empEndYear | date: "%Y" %}
+                {% if startYear != endYear %}
+                    {% assign range = range | push: endYear %}
+                {% endif %}
+            {% else %}
+                {% assign range = range | push: 'Present' %}
+            {% endif %}
+            {% assign range = range | join: " &ndash; " %}
+            {% assign entry = entry | push: range %}
+        {% endif %}
+        {% assign entry = entry | join: ', ' %}
+        {% assign employmentHistory = employmentHistory | append: entry  %}
+        {% assign employmentHistoryArray = employmentHistoryArray | push: entry %}
+    {% endfor %}
+{% endif %}
+

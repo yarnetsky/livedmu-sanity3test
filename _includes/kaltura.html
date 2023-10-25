@@ -1,0 +1,38 @@
+{% assign kalturaObj = site.data.all-data.result | where: '_id', story.kaltura[0]._ref %}
+
+{{kalturaObj[0].kalturaEmbedCode}}
+
+{% if story.transcriptLink %}
+<a href="{{story.transcriptLink}}" class="btn btn-outline-primary-pkbg mt-3" target="_new">View Transcript</a>
+{% endif %}
+
+<script>
+    $(document).ready(function() {
+        // get the width and height of the video + container width
+        let width = $('[id^=kaltura_player]').css('width').replace('px', '');
+        let height = $('[id^=kaltura_player]').css('height').replace('px', '');
+        let containerWidth = $('[id^=kaltura_player]').parent().css('width');
+        let containerHeight = $(window).height();
+        console.log(containerHeight);
+        // calculate suitable width and height for the video
+        let maxWidth = Math.floor(containerWidth.replace('px', ''));
+        let maxHeight = Math.floor(maxWidth * height/width);
+        // if the height is too big, use the height of the container as the max height
+        if (maxHeight > containerHeight) {
+            console.log('alternate plan')
+            maxHeight = Math.floor(containerHeight);
+            maxWidth = Math.floor(maxHeight * width/height);
+        }
+        // console.log('width: ' + width + 'px')
+        // console.log('height: ' + width + 'px')
+        // console.log('containerWidth: ' + containerWidth)
+        // console.log('containerHeight: ' + containerHeight)
+        // console.log('maxWidth: ' + maxWidth + 'px')
+        // console.log('maxHeight: ' + maxHeight + 'px')
+
+        // set the width and height of the video
+        $('[id^=kaltura_player]').css('width', maxWidth + 'px');
+        $('[id^=kaltura_player]').css('height',  maxHeight+ 'px');
+    })
+    
+</script>

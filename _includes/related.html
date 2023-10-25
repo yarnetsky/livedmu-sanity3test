@@ -1,0 +1,20 @@
+<div class="mt-5">
+    <h3>Related Stories</h3>
+
+    {% for related in story.seeAlso %}
+    {% assign relatedStory = related._ref %}
+    {% assign relatedStory = site.data.all-data.result | where: '_id',relatedStory | first %}
+    {% assign relatedTitle = relatedStory.title %}
+    {% assign relatedType = relatedStory.storyType | downcase | replace: ' ', '-' %}
+    {% if relatedType == 'oral-history' %}
+    {% assign relatedIcon = 'bi-camera-reels-fill' %}
+    {% elsif relatedType == 'documentary' %}
+    {% assign relatedIcon = 'bi-camera-reels-fill' %}
+    {% elsif relatedType == 'biography' %}
+    {% assign relatedIcon = 'bi-person-fill' %}
+    {% endif %}
+    {% assign relatedLink = '/stories/' | append : relatedStory.slug.current %}
+    <a type="button" class="btn btn-sm btn-outline-primary-pkbg m-1 text-start" href="{{ relatedLink }}"> <i
+            class="bi {{ relatedIcon }} {{relatedType}}"></i> {{ relatedTitle }}</a>
+    {% endfor %}
+</div>

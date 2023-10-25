@@ -1,0 +1,117 @@
+---
+layout: default
+---
+<section>
+    <div class="row">
+        <h2 class="mb-5">Feature Length</h2>
+        <!-- <img src="{{page.documentary-image}}" alt="{{page.title}}" class="img-fluid col-9" /> -->
+
+        <!-- Outer div defines maximum space the player can take -->
+
+        <div class="row gx-5">
+            <div class="col-12 col-lg-9">
+                <!-- begin Kaltura Embed: Bittersweet -->
+                <script
+                    src="https://cdnapisec.kaltura.com/p/886232/embedPlaykitJs/uiconf_id/51966022"></script>
+                <div class="ratio ratio-16x9">
+                    <div id="kaltura_player_557693899"></div>
+                </div>
+                <script>
+ try {
+                    var kalturaPlayer = KalturaPlayer.setup({
+                        targetId: "kaltura_player_557693899",
+                        provider: {
+                          partnerId: 886232,
+                          uiConfId: 51966022
+                        }
+                      });
+                      kalturaPlayer.loadMedia({entryId: '1_fwx3s9yi'});
+
+                    } catch (e) {
+                      console.error(e.message)
+                    }
+
+                </script>
+                <!-- end Kaltura Embed: Bittersweet-->
+            </div>
+
+
+            <div class="col-12 col-lg-3">
+                <h3 class="mt-5 mt-lg-0"><i>Bittersweet</i></h3>
+                <p>In this feature length documentary, Black Miami University students, faculty, staff, and alumni share
+                    their experiences attending a predominantly white university in the rural Midwest. Amid frank
+                    discussions of race and discrimination, students also reflect on the relationships, communities, and
+                    opportunities that make their time at Miami University both bitter and sweet.</p>
+                <p>Directed by Andy Rice; co-edited by Anika Elias and Andy Rice; Assistant Editor, Maggie Peña.
+                    <br>Co-Produced by Seth Seward and Andy Rice
+                </p>
+                <div class="h4">Coming Soon</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="mb-5">Documentary Shorts</h2>
+    <div class="row">
+        <div class="col-12 col-lg-5 align-self-center pe-5">
+
+            <h3><i>Trailblazers</i></h3>
+
+            <h3 class="border-bottom py-3" style='font-family: Georgia, Times, "Times New Roman", serif'>
+                Stories of Miami trailblazers who, with resilience and perseverance, changed Miami and the larger
+                community for the better.
+            </h3>
+            <div class="mt-5">
+                Black faculty and staff established Miami's first resource centers and programs for students of color in
+                the 1970s. The first series of <i>Trailblazers</i> documentary shorts profiles four of the campus leaders who
+                did this work, but are no longer here to tell their own stories. The films feature archival materials
+                and interviews with colleagues, friends, and former students to honor those who made a lasting impact on
+                communities of color at Miami University.
+            </div>
+        </div>
+        <div class="col-12 col-lg-7 align-self-center ps-0 ps-lg-5 mt-5 mt-lg-0">
+            <div class="row col-12">
+                <div class="col-12 col-md-6">
+                    <a href="{{page.trailblazer1-link}}"><img src="{{page.trailblazer1-image}}"
+                            alt="Cox documentary image still" /></a>
+                    <p class="h4 justify-content-between d-flex mt-2">
+                        <a href="{{page.trailblazer1-link}}"><span>Joseph Cox</span></a>
+                        <span>Duration: 3:37</span>
+                    </p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a href="{{page.trailblazer2-link}}"><img src="{{page.trailblazer2-image }}"
+                            alt="Musgrave documentary image still" /></a>
+                    <p class="h4 justify-content-between d-flex mt-2">
+                        <a href="{{page.trailblazer2-link}}"><span>Marian Musgrave</span></a>
+                        <span>Duration: 3:23</span>
+                    </p>
+                </div>
+            </div>
+            <!-- <p class="text-primary fst-italic my-5 col-10 offset-1"
+                style='font-family: Georgia, Times, "Times New Roman", serif'>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            </p> -->
+            <div class="row col-12">
+                <div class="col-12 col-md-6">
+                    <a href="{{page.trailblazer3-link}}"><img src="{{page.trailblazer3-image }}"
+                            alt="Wilkins documentary image still" /></a>
+                    <p class="h4 justify-content-between d-flex mt-2">
+                        <a href="{{page.trailblazer3-link}}"><span>Heanon Wilkins</span></a>
+                        <span>Duration: 4:57</span>
+                    </p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a href="{{page.trailblazer4-link}}"><img src="{{page.trailblazer4-image }}"
+                            alt="Young documentary image still" /></a>
+                    <p class="h4 justify-content-between d-flex mt-2">
+                        <a href="{{page.trailblazer4-link}}"><span>Larry Young</span></a>
+                        <span>Duration: 6:10</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+<h3 class="">Biography</h3>
+        <div class="container">
+            <div class="col-12 d-felx d-md-inline-flex">
+                <div class="col-9 ms-2 lh-lg">
+                  <!--  <div class="d-flex justify-content-between"> -->
+                        {{story.body | markdownify }}
+                     <!-- </div> -->
+                    <!-- <div class="hide-articel-box" id="linear-box"></div>-->
+                   
+                        <div id="credits">
+                            <h4 class="mt-5">Credits</h4>
+                            <p>Written by {{ credits | join: ', '}}</p>
+                        </div>
+                        
+                        <h4 class="mt-5">Sources</h4>
+                        <div class="collapse" id="sources">
+                            
+                            <p>{{ sources | markdownify }}</p>
+
+                        </div>
+
+
+                    <button class="btn btn-outline-primary-pkbg" type="button" data-bs-toggle="collapse" href="#sources"
+                        role="button" aria-expanded="false" aria-controls="sources" id="sources-readmore"
+                        onClick="toggleCitationButton()">
+                        <p id="citeButton" class="mb-0">See Sources</p>
+                    </button>
+
+
+                    {% include learn-more.html %} 
+                </div>
+            </div>
+        </div>

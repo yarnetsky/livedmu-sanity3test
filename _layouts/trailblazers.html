@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+<section class="row gx-5 mt-5 justify-content-center">
+
+    <div class="col-12 col-xl-6 mt-5 align-self-start">
+        <div class="ratio ratio-16x9">
+            <iframe src="{{page.video | escape}}" title="YouTube video" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-5 offset-1 mt-5">
+        <h2>{{ page.title | escape }}</h2>
+        <div class="row">
+            <div class="col-8">
+                <!-- {% include bio-data.html %} -->
+            </div>
+        </div>
+        <h3 class="mt-5">Transcripts</h3>
+        <div class="container">
+            <div class="col-12 d-felx d-md-inline-flex">
+                <div class="col-12 col-md-9 ms-2">
+                    <div class="d-flex justify-content-between">
+                        {{story.body | markdownify | truncate: 320 }}
+                    </div>
+                    <div class="hide-articel-box" id="linear-box"></div>
+
+                    <div class="collapse" id="story-body">
+                        <p>{{story.body | markdownify}}</p>
+                    </div>
+
+                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse"
+                        href="#story-body" role="button" aria-expanded="false" aria-controls="story-body"
+                        id="myCollapsible" onclick="readMoreClose()">
+                        <p id="mySpan" class="mb-0">Read More</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+    
+    });
+
+    function readMoreClose() {
+        var x = document.getElementById("mySpan");
+        var y = document.getElementById("linear-box")
+        if (x.innerHTML === "Read More") {
+            x.innerHTML = "Close";
+            y.style.height = "0rem";
+        } else {
+            x.innerHTML = "Read More";
+            y.style.height = "3rem";
+        }
+    }
+</script>

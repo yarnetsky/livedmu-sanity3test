@@ -1,0 +1,118 @@
+[
+  [
+    {
+      "carousel-verbal": "watch",
+      "slide-order": 1,
+      "carousel-verbal-block": {
+        "icon-class": "bi bi-play-circle me-3",
+        "carousel-verbal-btn": "Documentaries",
+        "carousel-verbal-link": "/documentaries"
+      },
+      "active-status": "active",
+      "images": {
+        "main-img": "/assets/img/carousel/Watch-main-cut.png",
+        "bg-img": "/assets/img/carousel/Watch-BG-cut.png",
+        "full-img":"/assets/img/carousel/Watch-full-cut.png",
+        "alt": "test1"
+      }
+    },
+    {
+      "carousel-verbal": "listen",
+      "slide-order": 2,
+      "carousel-verbal-block": {
+        "icon-class": "bi bi-play-circle me-3",
+        "carousel-verbal-btn": "Oral Histories",
+        "carousel-verbal-link": "/stories?storyType=Oral%20History"
+      },
+      "active-status": "",
+      "images": {
+        "main-img": "/assets/img/carousel/Listen-main-cut.png",
+        "bg-img": "/assets/img/carousel/Listen-BG-cut.png",
+        "full-img":"/assets/img/carousel/Listen-full-cut.png",
+        "alt": "test2"
+      }
+    },
+    {
+      "carousel-verbal": "learn",
+      "slide-order": 3,
+      "carousel-verbal-block": {
+        "icon-class": "bi bi-play-circle me-3",
+        "carousel-verbal-btn": "Biographies",
+        "carousel-verbal-link": "/stories?storyType=Biography"
+      },
+      "active-status": "",
+      "images": {
+        "main-img": "/assets/img/carousel/Learn-main-cut.png",
+        "bg-img": "/assets/img/carousel/Learn-BG-cut.png",
+        "full-img":"/assets/img/carousel/Learn-full-cut.png",
+        "alt": "test3"
+      }
+    },
+    {
+      "carousel-verbal": "engage",
+      "slide-order": 4,
+      "carousel-verbal-block": {
+        "icon-class": "bi bi-play-circle me-3",
+        "carousel-verbal-btn": "Research",
+        "carousel-verbal-link": "/research"
+      },
+      "active-status": "",
+      "images": {
+        "main-img": "/assets/img/carousel/Engage-main-cut.png",
+        "bg-img": "/assets/img/carousel/Engage-BG-cut.png",
+        "full-img":"/assets/img/carousel/Engage-full-cut.png",
+        "alt": "test4"
+      }
+    }
+  ],
+  [
+    {
+      "story-order": 1,
+      "story-title": "Franklin Shands",
+      "story-description": "",
+      "image-src": "/assets/img/cards/Homepage_Card1_ShandsFranklin.jpg",
+      "read-more-link": "/stories/franklin-shands",
+      "flip-alt": "Franklin Shands with fellow black janitors, cooks, and staff in the 1940s."
+    },
+    {
+      "story-order": 2,
+      "story-title": "The Mentor",
+      "story-description": "",
+      "image-src": "/assets/img/cards/Homepage_Card2_YoungLarry_300px.jpg",
+      "read-more-link": "/stories/larry-young",
+      "flip-alt": "headshot of Larry Young"
+    },
+    {
+      "story-order": 3,
+      "story-title": "Denise Taliaferro Baszile",
+      "story-description": "",
+      "image-src": "/assets/img/cards/Homepage_Card3_BaszileDenise_1200px.jpg",
+      "read-more-link": "/stories/denise-baszile-taliaferro",
+      "flip-alt": "Photo relating to the life of Denise Taliaferro Baszile"
+    },
+    {
+      "story-order": 4,
+      "story-title": "The Great",
+      "story-description": "",
+      "image-src": "/assets/img/cards/Homepage_Card4_EmbryWayne_1200px.jpg",
+      "read-more-link": "/stories/wayne-embry",
+      "flip-alt": "Basketball great Wayne Embry making a hook shot"
+    },
+    {
+      "story-order": 5,
+      "story-title": "Seth Seward",
+      "story-description": "",
+      "image-src": "/assets/img/cards/Homepage_Card5_SewardSeth_1200px.jpg",
+      "read-more-link": "/stories/seth-seward",
+      "flip-alt": "Seth Seward and members of Kappa Alpha Psi fraternity"
+    },
+    {
+      "story-order": 6,
+      "story-title": "Les Travailleurs",
+      "story-description": "",
+      "image-src": "/assets/img/cards/Homepage_Card6_Le Travailleurs_300px.jpg",
+      "read-more-link": "/stories/edythe-hargrave-turner",
+      "flip-alt": "Edythe Hargrave Turner and members of Le Travailleurs"
+    }
+  ]
+]

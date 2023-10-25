@@ -1,0 +1,98 @@
+---
+layout: default
+---
+{% include bio-variables.html %}
+{% include linkify-sources-js.html %}
+<section class="row gx-5 mt-5 justify-content-center">
+
+    <div class="col-12 col-sm-8 col-xl-4 mt-5 align-self-start">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" aria-label="click to see larger image" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <figure>
+                <img src="{{storyFinderData.bestImage}}" class="img-fluid rounded-3" alt="{{fullName}}" id="enlarged-img">
+                {% if storyFinderData.bestImageCaption %}
+                <figcaption>{{storyFinderData.bestImageCaption}}</figcaption>
+                {% endif %}
+            </figure>
+        </button>
+        <!-- Endof Button trigger modal -->
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4" id="exampleModalLabel">{{fullName}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <figure>
+                        <img src="{{storyFinderData.bestImage}}" class="img-fluid rounded-3" alt="{{fullName}}">
+                        {% if storyFinderData.bestImageCaption %}
+                        <figcaption>{{storyFinderData.bestImageCaption}}</figcaption>
+                        {% endif %}
+                    </figure>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Endof Modal -->
+    <div class="col-12 col-xl-8 mt-5">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                {% include bio-data.html %}
+            </div>
+            <div class="col offset-1">
+                {% if storyFinderData.theme %}
+                {% include themes.html %}
+                {% endif %}
+                {% if story.seeAlso and story.seeAlso.size > 0 %}
+                {% include related.html %}
+                {% endif %}
+            </div>
+        </div>
+        
+        {% include bio-maintext.html %}
+    </div>
+</section>
+
+<section id="iiif">
+    {% include iiif.html %}
+</section>
+
+<section id="citeAs" class="row">
+    <div>
+        <h3>Cite this page:</h3>
+        {% include cite-this-page.html %}
+    </div>
+</section>
+
+<section id="publication-date">
+    {% if pubDate %}
+    <p class="pub-date">Published: {{ pubDate | date: "%B %d, %Y" }}{{lastUpdateString}}</p>
+    {% endif %}
+</section>
+
+{% include creative-commons.html %}
+
+{% comment | note: "remove this comment wrapper to view related variables echoed at the bottom of the page" %}
+{% include echo-documentary-variables.html %}
+{% endcomment %}
+
+<script>
+    function toggleCitationButton() {
+        var x = document.getElementById("citeButton");
+        var y = document.getElementById("citation")
+        if (x.innerHTML === "See Sources") {
+            x.innerHTML = "Hide Sources";
+            y.style.height = "3rem";
+        } else {
+            x.innerHTML = "See Sources";
+            y.style.height = "3rem";
+        }
+    }
+</script>

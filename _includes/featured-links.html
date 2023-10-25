@@ -1,0 +1,24 @@
+{% assign featuredNews = site.data.all-data.result | where:'_type','links' | where:'siteLocation','front' |
+where:'publish','true' %}
+
+{% for news in featuredNews %}
+
+
+
+<figure class="text-center d-flex flex-column justify-content-center col-12 featured-link" id="blockquote" style="padding: 0 4rem;">
+    <p class="bigquote"><i class="bi bi-activity"></i></p>
+    <blockquote class="blockquote">
+        <h3 class="featured-link-title"><a href="{{news.featuredURL}}" target="_blank">{{news.title}}</a></h3>
+        {% if news.linkImage %}
+        <div class="featured-link-image"><img src="{{news.linkImage}}" class="img-fluid rounded-3" alt="">
+            {% endif %}
+    </blockquote>
+    
+    {% if news.body %}
+    <div class="featured-link-body">{{ news.body | markdownify }}</div>
+    {% endif %}
+
+
+</figure>
+
+{% endfor %}

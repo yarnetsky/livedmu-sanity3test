@@ -1,0 +1,34 @@
+<div class="input-group">
+    <form action="https://digital.lib.miamioh.edu/digital/search/collection/afamhist!kaos!alumnus!mphoto!mustories!activism!studentlife!student!mustudent!facmem!mutheses!p17240coll2!race/searchterm/" method="get" id="digital-search-form" class="d-inline-flex col-12" target="_blank" accept-charset="UTF-8">
+        <label class="visually-hidden" for="digitalsearch">Search for items in all collections</label>
+        <input class="searchbox form-control" name="" id="digitalsearch" size="50" placeholder="Search in all related collections" type="text" />
+        <label for="digitalcoll-search-button" class="visually-hidden">Submit</label>
+        <input id="digitalcoll-search-button" class="digColleSearchbutton btn" name="submit" type="submit" value=" "  formtarget="_blank" />
+    </form>
+</div>
+
+<script>
+    $('#digital-search-form').submit(function () {
+        var form = $(this),
+            paths = [];
+
+        // get paths
+        form.find('input').each(function () {
+            var self = $(this),
+                value = self.val();
+
+            if (value)
+                paths[paths.length] = value;
+
+            // always disable to prevent edge cases
+            self.prop('disabled', true);
+        });
+
+        if (paths.length)
+            this.action += paths.join('/') + '/';
+
+        window.open(this.action, '_blank');
+        location.reload();
+        return false;
+    });
+</script>

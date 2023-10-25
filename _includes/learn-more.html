@@ -1,0 +1,11 @@
+{% if story.learnMore %} 
+    <h4 class="mt-5">Learn More</h4>
+    <ul>
+        {% for related in story.learnMore %}
+        {% assign entry = site.data.all-data.result | where: '_id', related._ref | first %}
+        <li>        
+            <a href="{{entry.featuredURL}}" target="_blank">{{entry.urlTitle}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}

@@ -1,0 +1,8 @@
+<h1>{{ page.document.name }}</h1>
+<ul>
+  {% for story in page.document.stories %}
+  <li>
+    {{ story.name }}
+  </li>
+  {% endfor %}
+</ul>

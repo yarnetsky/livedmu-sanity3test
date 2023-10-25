@@ -1,0 +1,80 @@
+<div class="jump visually-hidden-focusable">
+  <a href="#main-content" id="jump-to-main">Skip to main content</a>
+</div>
+<header class="site-header">
+  <div class="collapse card card-body rounded-0" tabindex='-1' id="gSearch">
+    <div class="gcse-search"></div>
+  </div>
+  <nav role="navigation" class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-5" href="/"><img src="/assets/img/favicon_io/favicon-32x32.png"
+          alt="{{site.title}} website logo" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/about/">The Project</a></li>
+              <li><a class="dropdown-item" href="/team/">The Team</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Stories
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/stories">Explore Stories</a></li>
+              <li><a class="dropdown-item" href="/documentaries">Documentaries</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archives">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/research">Research</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/get-involved">Get Involved</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#gSearch" role="button" aria-expanded="false" aria-controls="gSearch"
+              id="site-search-link" class="site-search-icon-control">
+              <i class="bi bi-search" id="site-search-icon"></i>
+              <span class="site-search-text">Site Search</span>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <script async src="https://cse.google.com/cse.js?cx=14971a6fbfb6c4d5c">
+  </script>
+  
+  <script>
+    $(function () {
+      // Enlarge the magnify glass icon of Google Site Search Box
+      setTimeout(function () {
+        if ($('.gsc-search-button-v2 > svg')[0] !== undefined) {
+          $('.gsc-search-button-v2 > svg')[0].setAttribute("width", "20");
+          $('.gsc-search-button-v2 > svg')[0].setAttribute("height", "20");
+        }
+      }, 1000);
+    });
+
+    $('.site-search-icon-control').click(function () {
+      $('#site-search-icon').toggleClass('bi-search');
+      $('#site-search-icon').toggleClass('bi-x-circle');
+      $('.bi-x-circle ~ span').text('Close');
+      $('.bi-search ~ span').text('Site Search');
+    });
+
+  </script>
+
+</header>

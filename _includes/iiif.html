@@ -1,0 +1,71 @@
+{% if story.contentdm %}
+<h3>Selected Documents</h3>
+
+<div class="d-flex">
+    <ul id="iiif-documents" class="list-group">
+        {% assign iiifs = '' %}
+        {% for item in story.contentdm %}
+        {% assign entry = site.data.all-data.result | where: '_id', item._ref | first %}
+        <li class="list-group-item"><a class="iiif-updater" href="#"
+                data-manifests='{"{{entry.contentdmManifest}}":{"provider":"Miami University Library"}}'
+                data-windows='[{"id":"primaryWindow","loadedManifest":"{{entry.contentdmManifest}}"}]'>{{entry.contentdmTitle}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <style>
+        section#iiif section{
+            margin-top: 0px !important;
+        }
+
+        #m3-wrapper {
+            height: 90vh;
+            position: relative;
+        }
+
+        #iiif-documents a {
+            text-decoration: none;
+            display: block;
+        }
+
+        #iiif-documents .active a {
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+
+    <div class="container">
+        <div id="m3-wrapper">
+            <div id="viewer"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+<script>
+    function loadIIIF(manifests, windows) {
+        window.mirador = Mirador.viewer({
+            id: "viewer",
+            manifests: manifests,
+            windows: windows,
+            window: {
+                defaultView: 'single'
+            }
+        });
+    }
+
+    $(function () {
+        $('.iiif-updater').click(function (e) {
+            e.preventDefault();
+            var manifests = ($(this).data('manifests'));
+            var windows = ($(this).data('windows'));
+            console.log((manifests), windows)
+            loadIIIF(manifests, windows);
+            $('.iiif-updater').parent().removeClass('active');
+            $(this).parent().addClass('active');
+        });
+        $('.iiif-updater').first().click(); // display the first manifest on page load
+    });
+</script>
+{% endif %}

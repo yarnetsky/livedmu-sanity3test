@@ -1,0 +1,83 @@
+<div>
+    <hr />
+    <h2>Available fields</h2>
+    <div class="person">
+        <h2 class="h3">Person data</h2>
+        <li>Bio: (person.bio | markdownify): {{person.bio | markdownify}}</li>
+        </li>
+        </ul>
+        <h3 class="h4">Full person data</h3>
+        {{person}}
+    </div>
+
+    <div class="story">
+        <h2 class="h3">Story data</h2>
+        <ul class="story-data">
+            <li>Title (story.title): {{story.title}}</li>
+            <li>Decades (story.decades): {{story.decades | join: ', '}}</li>
+            <li>Story (story.body | markdownify): {{story.body | markdownify}}</li>
+        </ul>
+        <h3 class="h4">Full story data</h3>
+        {{story}}
+    </div>
+
+    <div class="story-finder">
+        <h2 class="h3">StoryFinder data</h2>
+
+        <ul class="story-calculated-data">
+            <li>StoryFinder Values:</li>
+            <li>Cover Image (storyFinderData.coverImage): {{storyFinderData.coverImage}}</li>
+            <li>Decades (storyFinderData.decades): {{storyFinderData.decades | join: ', '}}</li>
+            <li>Theme (storyFinderData.theme): {{storyFinderData.theme | join: ', '}}</li>
+            <li>Duration (storyFinderData.duration): {{storyFinderData.duration}}</li>
+            <li>Location (storyFinderData.location): {{storyFinderData.location}}</li>
+            <li>Gender (storyFinderData.featuredDemographics.gender): {{storyFinderData.featuredDemographics.gender}}
+            </li>
+            <li>Race: (storyFinderData.featuredDemographics.race): {{storyFinderData.featuredDemographics.race | join:
+                ', '}}</li>
+            <li>Birth Year: (storyFinderData.featuredDemographics.birthYear):
+                {{storyFinderData.featuredDemographics.birthYear | date: '%Y'}}</li>
+            <li>Death Year: (storyFinderData.featuredDemographics.deathYear):
+                {{storyFinderData.featuredDemographics.deathYear | date: '%Y' }}</li>
+            <li>MiamiInfo (educationHistory): {{educationHistory}}</li>
+            <li>MiamiInfo as array (educationHistoryArray): {{educationHistoryArray}}</li>
+            <li>Degree: {{miamiInfo[0].degree}} {{miamiInfo[0].educationInstitution}} {{miamiInfo[0].graduationYear|
+                date: "%Y"}}</li>
+        </ul>
+        <h3 class="h4">Full StoryFinder data</h3>
+        {{storyFinderData}}
+    </div>
+
+    <h2>Image experiments</h2>
+
+    <h3>width 400px</h3>
+    <img src="{{storyFinderData.bestImage}}?w=400" class="img-fluid" alt="{{fullName}}">
+
+    <h3>flip</h3>
+    <img src="{{storyFinderData.bestImage}}?flip=v" class="img-fluid" alt="{{fullName}}">
+
+
+    <h3>Blur and height 400px</h3>
+    <img src="{{storyFinderData.bestImage}}?blur=50&h=400" class="img-fluid" alt="{{fullName}}">
+
+    <h3>Invert</h3>
+    <img src="{{storyFinderData.bestImage}}?invert=true" class="img-fluid" alt="{{fullName}}">
+
+    <h3>Rect + w/h + clip square</h3>
+    <img src="{{storyFinderData.bestImage}}?rect=100,110,800,800&h=400&w=400&fit=clip" class="img-fluid"
+        alt="{{fullName}}">
+
+    <h3>Rect + w/h + crop square</h3>
+    <img src="{{storyFinderData.bestImage}}?rect=100,110,800,800&h=400&w=400&fit=crop" class="img-fluid"
+        alt="{{fullName}}">
+
+    <h3>w/h + crop square</h3>
+    <img src="{{storyFinderData.bestImage}}?h=400&w=400&fit=crop" class="img-fluid" alt="{{fullName}}">
+
+    <h3>w/h + clip square</h3>
+    <img src="{{storyFinderData.bestImage}}?h=400&w=400&fit=clip" class="img-fluid" alt="{{fullName}}">
+
+
+    <script src="https://esm.sh/v99/@sanity/image-url@1.0.1/es2022/image-url.js"></script>
+
+</div>

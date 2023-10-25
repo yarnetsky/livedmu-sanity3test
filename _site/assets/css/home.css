@@ -1,0 +1,84 @@
+body { background: #1b1717; background: -moz-radial-gradient(circle, #1b1717 85%, #cfcbd0 135%); background: -webkit-radial-gradient(circle, #1b1717 85%, #cfcbd0 135%); background: radial-gradient(circle, #1b1717 85%, #cfcbd0 135%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1b1717",endColorstr="#cfcbd0",GradientType=1); }
+
+@media screen and (max-width: 990px) { #front-hero-tabs { display: none; } .bc-carousel-title { margin: 0; } }
+
+#myCarousel { margin-top: 0; }
+
+#play-pause { position: absolute; bottom: 1rem; left: 1rem; z-index: 10; }
+
+/* SVG play-pause Controls */
+.carousel-tablist .rotation { flex: 0 0 auto; height: 30px; padding: 0; background-color: transparent; border: none; outline: none; z-index: 10; }
+
+.carousel-tablist .svg-play .background { stroke: black; fill: black; stroke-width: 1px; opacity: 0.6; }
+
+.carousel-tablist .svg-play .border { fill: transparent; stroke: transparent; stroke-width: 2px; }
+
+.carousel-tablist .svg-play .pause { stroke-width: 4; fill: transparent; stroke: transparent; }
+
+.carousel-tablist .svg-play .play { stroke-width: 1; fill: transparent; stroke: transparent; }
+
+.carousel-tablist .pause .svg-play .pause, .carousel-tablist .play .svg-play .play { fill: white; stroke: white; }
+
+.carousel-tablist .rotation:focus .svg-play .background, .carousel-tablist .rotation:hover .svg-play .background, .carousel-tablist .rotation:hover .svg-play .border { fill: #005a9c; stroke: #005a9c; opacity: 1; }
+
+.carousel-tablist .rotation:focus .svg-play .border { stroke: white; }
+
+/*-- end of svg css --*/
+.bc-carousel-title { z-index: 0; }
+
+.carousel-item.active { display: flex; }
+
+.carousel-title-top { font-family: bebas-neue-by-fontfabric, sans-serif; font-weight: 400; color: white; text-shadow: 2px 6px 6px #c5c5c5; font-size: calc(1.525rem + 3.3vw); }
+
+@media (min-width: 1200px) { .carousel-title-top { font-size: 4rem; } }
+
+.carousel-title-bottom { font-family: bebas-neue-by-fontfabric, sans-serif; font-weight: 700; color: white; font-size: calc(1.825rem + 6.9vw); line-height: calc(1.625rem + 4.5vw); }
+
+@media (min-width: 1200px) { .carousel-title-bottom { font-size: 7rem; } }
+
+@media (min-width: 1200px) { .carousel-title-bottom { line-height: 5rem; } }
+
+@media screen and (max-width: 768px) { .carousel-title-bottom { font-size: 5rem; } }
+
+.carousel-verbal-block { width: 33%; top: 64%; z-index: 2; right: 10%; }
+
+@media screen and (max-width: 990px) { .carousel-verbal-block { width: 100%; } }
+
+.carousel-verbal { -webkit-text-stroke: 2px white; font-family: bebas-neue-by-fontfabric, sans-serif; font-weight: 600; color: rgba(0, 0, 0, 0.5); font-size: calc(1.875rem + 7.5vw); line-height: calc(1.5rem + 3vw); }
+
+@media (min-width: 1200px) { .carousel-verbal { font-size: 7.5rem; } }
+
+@media (min-width: 1200px) { .carousel-verbal { line-height: 3.75rem; } }
+
+.carousel-verbal-btn { font-family: din-condensed, sans-serif; font-weight: 300; font-size: calc(1.3625rem + 1.35vw); }
+
+@media (min-width: 1200px) { .carousel-verbal-btn { font-size: 2.375rem; } }
+
+.carousel-verbal-btn.btn.btn-outline-primary { background-color: white; }
+
+.carousel-verbal-btn.btn.btn-outline-primary:hover { background-color: #7f39fb; color: white; }
+
+.carousel-verbal-paragraph { color: white; font-family: din-condensed, sans-serif; font-weight: 300; height: 6rem; overflow: scroll; font-size: 1.25rem; line-height: 1.25rem; }
+
+.carousel-indicators { left: auto; margin: 0 !important; background-image: repeating-linear-gradient(30deg, black, #4b4b4b 12rem); }
+
+.carousel-indicators button.slide-controller { transform: rotate(-90deg); height: 100%; width: 4.5rem; color: #f2e7fe; text-indent: 0px; font-family: bebas-neue-by-fontfabric, sans-serif; font-size: 1.375rem; margin: 0 !important; opacity: 1; border: 0px solid transparent; }
+
+.carousel-indicators button.slide-controller[aria-selected='true'] { color: #BB86FC; text-decoration: underline; text-underline-offset: 0.3rem; text-decoration-thickness: 0.3rem; background-color: transparent; }
+
+.carousel-indicators button.slide-controller:hover { color: #DBB2FF; text-decoration: underline; text-underline-offset: 0.3rem; text-decoration-thickness: 0.3rem; background-color: transparent; }
+
+.carousel-indicators button.slide-controller:not(.active) { background-color: transparent; }
+
+/* .carousel-control-prev, .carousel-control-next { font-size: 3rem; color: $primary-normal; } .carousel-control-prev-icon, .carousel-control-next-icon { background-image: none; } #carousel-control-prev { top: -5px !important; bottom: auto !important; } #carousel-control-next { top: auto !important; bottom: 50px !important; } */
+.bigquote { height: 4rem; font-size: 3.5rem; }
+
+blockquote { color: #985eff; border-left: 0px; padding-left: auto; font-size: calc(1.4rem + 1.8vw); font-style: italic; padding: 0 3rem; }
+
+@media (min-width: 1200px) { blockquote { font-size: 2.75rem; } }
+
+figure#blockquote { background-image: repeating-linear-gradient(170deg, #dbdbdb, #dbdbdb 28%, #f3f3f3 27%, #f3f3f3 72%); font-family: auto; height: 30rem; outline: 4px solid black; outline-offset: -1.5rem; }
+
+@media screen and (max-width: 768px) { figure#blockquote { height: 40rem; } }
+
+/*# sourceMappingURL=home.css.map */

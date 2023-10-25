@@ -1,0 +1,223 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/stories.css' | relative_url }}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ejs@3.1.8/ejs.min.js"></script>
+<script src="/assets/js/FacetFilter/src/FacetFilter.js"></script>
+<script src="/assets/js/FacetFilter/src/RenderFacets.js"></script>
+<script src="/assets/js/FacetFilter/src/Pagination.js"></script>
+<script src="/assets/js/FacetFilter/src/UrlFilters.js"></script>
+<script>
+
+
+
+    function addFilter() {
+        filtersElement = document.createElement('div');
+        filtersElement.setAttribute('id', 'filters');
+        if ($("#filter-wrapper").is(":visible")) {
+            document.getElementById("filter-wrapper").appendChild(filtersElement);
+        }
+        if ($("#filter-wrapper-mobile").is(":visible")) {
+            document.getElementById("filter-wrapper-mobile").appendChild(filtersElement);
+        }
+    }
+
+    filtersElement = document.createElement('div');
+    filtersElement.setAttribute('id', 'filters');
+
+    $(window).resize(function () {
+
+        if ($("#filter-wrapper-mobile").is(":visible")) {
+            if ($("#filter-wrapper > #filters")) {
+                $("#filter-wrapper > #filters").remove();
+            }
+            document.getElementById("filter-wrapper-mobile").appendChild(filtersElement);
+        }
+        if ($("#filter-wrapper").is(":visible")) {
+            if ($("#filter-wrapper-mobile > #filters")) {
+                $("#filter-wrapper-mobile > #filters").remove();
+            }
+            document.getElementById("filter-wrapper").appendChild(filtersElement);
+        }
+
+    });
+
+    $(document).ready(function () {
+
+        let urlParams = new URLSearchParams(window.location.search);
+        let subTitleLabel, subTitleValue;
+        if (urlParams.has('storyType')) {
+            storyType = urlParams.get('storyType');
+            let displayStoryType;
+            if (storyType == 'Documentary') {
+                displayStoryType = 'Documentaries';
+            } else if (storyType == 'Oral History') {
+                displayStoryType = 'Oral Histories';
+            } else if (storyType == 'Biography') {
+                displayStoryType = 'Biographies';
+            }
+            subTitleLabel = 'Story Type';
+            subTitleValue = displayStoryType;
+        } else if (urlParams.has('theme')) {
+            theme = urlParams.get('theme');
+            subTitleLabel = 'Theme';
+            subTitleValue = theme;
+        }
+        if (subTitleLabel != undefined && subTitleValue != undefined) {
+            $('h1').after('<legend class="text-start fs-3 text-secondary">' + subTitleLabel + ': <span class="text-primary"> ' + subTitleValue + '</span></legend>');
+        }
+        function showFeaturedStory(obj, params = { pageLoad: false }) {
+            // go directly to story if screen is too small to rely on seeing the changed preview
+            if ($(window).width() < 993 && params.pageLoad === false) {
+                window.location = $(obj).data('slug');
+            }
+            /* this only runs on load, subsequent facet clicks handled in RenderFacets.featureItem */
+            let img = $(obj).find('img').attr('src');
+            let bestImage = $(obj).data('bestimage');
+            // let bestImageMetadata = $(obj).data('bestimagemetadata');
+            let title = $(obj).data('title');
+            let briefBio = $(obj).data('briefbio');
+            let subtitle = $(obj).data('subtitle');
+            // console.log('bestImageMetadata', bestImageMetadata);
+            // console.log('bestImage', bestImage);
+            // console.log('title', title);
+            $('#featured-title').text(title);
+            $('featured-subtitle').text(subtitle);
+            $('#featured-text').text(briefBio);
+            $('#featured-link').attr('href', $(obj).data('slug'));
+            $('#enlarged-img').attr('src', bestImage + '?w=600&h=800');
+        }
+
+        const pageConf = {
+            dataSelector: '#stories .object',
+            dataSelector0: '#stories .object a',
+            onItemsReady: function () {
+                let items = $('#stories .object');
+                let max = $('#stories li:not([style*="display: none"])').length;
+                let randIndex = Math.floor(Math.random() * Math.floor(max)) + 1;
+                let randItem = items.eq(randIndex);
+                showFeaturedStory(randItem, { pageLoad: true });
+            },
+            // display featured story onscreen on object click
+            onResultClick: function (e, obj) {
+                // console.log('Object clicked', obj.prop('tagName'))
+                showFeaturedStory(obj, { pageLoad: false, onResultClick: true });
+            },
+            // click through to story page on anchor tag click
+            onResultClick0: function (e, obj) {
+                if (obj.prop('tagName') == 'A') {
+                    window.location = obj.attr('href');
+                }
+            },
+
+            itemsPerPage: 12,
+            paginationDivId: '#pagination',
+            paginationCountId: '#pagination-count',
+            contentDivId: '#stories',
+            sortTagsByCount: true,
+        };
+        const conf = {
+            // itemFormat: '<a href="<%= url %>" class="object-wrapper"><li class="card object"><img class="card-img-top" src="<%= photo %>""><div class="card-body"><%= firstName %> <%= lastName %><br><%= decades %></div></li></a>',
+            // itemFormat: '<li class="card object"><%= title %></li>',
+            itemFormat: '<li class="card object p-1 m-0 border-0" id="story-<%= slug %>" data-title="<%= title %>" data-slug="<%= slug %>" data-briefbio="<%= briefBio %>" data-bestImage="<%= bestImage %>"><img alt="" class="card-img-top" id="thumb-<%=slug%>" src="<%= thumbImage %>?fit=crop&crop=top&h=200&w=150" onerror="this.onerror=null;this.src=\'/assets/img/site/blank-story-portrait.png\';let node=document.getElementById(\'thumb-<%=slug%>\');node.parentNode.setAttribute(\'data-bestImage\',\'/assets/img/site/blank-story-portrait.png\');"><div class="card-body text-dark bg-light d-flex justify-content-center align-items-center"><a href="/stories/<%= slug %>"><%= title %></a></div></li>',
+            dataFile: '/assets/js/FacetFilter/data/story-finder.json',
+            dataObjectPath: 'result',
+            schemaFile: '/assets/js/FacetFilter/data/stories-schema.json',
+            facetDivId: '#filters',
+            contentDivId: '#stories',
+            searchableFields: ['title'],
+            defaultSort: 'title',
+            pageConf
+        }
+        facets(conf);
+
+        // const urlParams = new URLSearchParams(window.location.search);
+        // for (const key of urlParams.keys()) console.log(key);
+        // let items = $('#facet-raceOrEthnicity li a').filter('[data-value="Black"]').click();
+        // console.log(items, items);
+        let maxTags = 3;
+        $('.facet[data-type="tag"]')
+            .find('li:gt(' + (maxTags - 1) + ')')
+            .hide()
+            .end()
+            .append(
+                $('<li class="btn btn-sm btn-primary">Show More...</li>').click(function () {
+                    $(this).siblings(':hidden').show().end().remove();
+                })
+            );
+
+        addFilter();
+
+    });
+
+</script>
+
+<section>
+
+    <div class="row">
+
+        <div id="filter-wrapper" class="col-xl-2 order-1 order-xl-2 form d-none d-xl-block" aria-label="Story Finder">
+            <h2 class="h3">Story Finder</h2>
+            <!-- <div id="filters"></div> -->
+        </div>
+
+
+        <!-- Start of mobile offcanvas  -->
+        <div class="d-flex justify-content-center d-xl-none">
+            <button class="btn btn-primary btn-lg mb-5 d-block d-xl-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#filter-wrapper-mobile" aria-controls="filter-wrapper-mobile">
+                Story Finder
+            </button>
+        </div>
+
+        <div class="offcanvas offcanvas-start d-block d-xl-none overflow-y-auto" tabindex="-1" id="filter-wrapper-mobile"
+            aria-labelledby="filter-wrapper-mobile-label">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title h3" id="filter-wrapper-mobile-label">Story Finder</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- <div id="filters"></div> -->
+            </div>
+        </div>
+        <!-- End of mobile offcanvas -->
+
+        <div id="main-panel" class="col-xl-10 order-2 order-xl-1 row" aria-label="Explore Stories">
+            <div class="col-lg-5 d-none d-lg-block">
+
+                <div class="enlargedImageContainer">
+                    <img src="" class="img-fluid" alt="Expore Our Stories" id="enlarged-img">
+                    <div class="titleArea p-5 text-secondary">
+                        <h3 id="featured-title" class="text-start display-5">
+                            Title
+                        </h3>
+                        <h4 id="featured-subtitle"></h4>
+                        <p id="featured-text" class="text-start my-5">
+                        </p>
+                        <p class="text-end">
+                            <a href="" id="featured-link" class="btn btn-primary">Read More <span
+                                    class="visually-hidden">about this story</span></a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-7">
+                <ul id="stories" class="m-0 p-0 row row-cols-auto gy-3 d-flex justify-content-center">
+                </ul>
+            </div>
+            <nav aria-label="Page navigation"
+                class="d-flex flex-row justify-content-evenly align-items-center col-12 col-lg-6 offset-lg-6 float-end">
+                <div role="alert" id="pagination-count-wrapper" class="d-flex justify-content-center">
+                    <span id="pagination-count" class="justify-content-center"></span>&nbsp;items match criteria
+                </div>
+                <ul id="pagination" class="pagination justify-content-center m-1"></ul>
+            </nav>
+        </div>
+
+    </div>
+
+</section>
